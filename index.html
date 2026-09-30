@@ -57,6 +57,16 @@ p{margin:0}
 .nav ul a:hover,.nav ul a.active{color:var(--ink);background:var(--accent-soft)}
 .theme-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:grid;place-items:center}
 .theme-btn svg{width:18px;height:18px}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.anime-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:10px;text-decoration:none;font:600 14px var(--body);white-space:nowrap;color:#fff;background:linear-gradient(120deg,#E8336D,#8B3FE4);box-shadow:0 6px 18px -8px #E8336D;transition:transform .2s,box-shadow .2s}
+.anime-btn .jp{font:700 12px "Hiragino Sans","Yu Gothic","Noto Sans JP",var(--body);opacity:.9}
+.anime-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);animation:sheen 3.2s ease-in-out infinite}
+.anime-btn:hover{transform:translateY(-2px) rotate(-1.5deg);box-shadow:0 10px 24px -8px #E8336D}
+.anime-btn:hover .star{animation:twirl .6s ease-out}
+@keyframes sheen{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+@keyframes twirl{to{transform:rotate(360deg) scale(1.2)}}
+.anime-btn .star{display:inline-block}
+@media (max-width:420px){.anime-btn .jp{display:none}.anime-btn{padding:0 12px}}
 @media (max-width:760px){.nav ul{display:none}}
 
 /* ---------- hero ---------- */
@@ -282,9 +292,12 @@ html.booting #boot,#boot.out{display:flex}
       <li><a href="#skills">/skills</a></li>
       <li><a href="#contact">/contact</a></li>
     </ul>
+    <div class="nav-actions">
+    <a class="anime-btn" href="anime.html" title="Switch to the anime edition of this portfolio"><span class="star" aria-hidden="true">✦</span>Anime mode<span class="jp" aria-hidden="true">アニメ</span></a>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch colour theme">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
     </button>
+    </div>
   </div>
 </nav>
 
@@ -851,7 +864,7 @@ html.booting #boot,#boot.out{display:flex}
     const cloop = () => { cx += (tx - cx) * .2; cy += (ty - cy) * .2; cur.style.transform = `translate(${cx}px,${cy}px)`; requestAnimationFrame(cloop); };
     cloop();
 
-    document.querySelectorAll('.btn,.theme-btn').forEach(b => {
+    document.querySelectorAll('.btn,.theme-btn,.anime-btn').forEach(b => {
       b.addEventListener('pointermove', e => {
         const r = b.getBoundingClientRect();
         b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .25}px,${(e.clientY - r.top - r.height / 2) * .35}px)`;

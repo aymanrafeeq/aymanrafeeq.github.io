@@ -98,6 +98,14 @@ html.op #op,#op.out{display:grid}
 .theme-btn{width:40px;height:40px;border:2px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;display:grid;place-items:center;box-shadow:3px 3px 0 var(--line);transition:transform .15s}
 .theme-btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--line)}
 .theme-btn svg{width:18px;height:18px}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.classic-btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;white-space:nowrap;text-decoration:none;font:500 13.5px ui-monospace,"SFMono-Regular",Menlo,monospace;background:var(--ink);color:var(--paper);border:2px solid var(--line);box-shadow:3px 3px 0 var(--pink);transition:transform .15s,box-shadow .15s}
+.classic-btn b{font-weight:500;color:var(--pink)}
+.classic-btn .word{margin-left:-2px}
+.classic-btn:hover{transform:translate(-2px,-2px) rotate(-1deg);box-shadow:5px 5px 0 var(--pink)}
+.classic-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--pink)}
+@media (max-width:480px){.logo small{display:none}.logo span{font-size:12px;white-space:nowrap}.nav .wrap{gap:10px}.classic-btn .word{display:none}.classic-btn{padding:0 11px}}
+@media (max-width:420px){.classic-btn .word{display:none}.classic-btn{padding:0 11px}.logo span{display:none}}
 @media (max-width:820px){.nav ul{display:none}}
 
 /* ---------- hero ---------- */
@@ -316,9 +324,12 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
       <li><a href="#techniques">Techniques</a></li>
       <li><a href="#contact">Team up</a></li>
     </ul>
+    <div class="nav-actions">
+    <a class="classic-btn" href="index.html" title="Switch to the classic edition of this portfolio"><b aria-hidden="true">&lt;/&gt;</b>Classic<span class="word">mode</span></a>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch between day and night theme">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
     </button>
+    </div>
   </div>
 </nav>
 
